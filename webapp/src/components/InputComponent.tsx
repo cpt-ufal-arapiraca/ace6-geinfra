@@ -1,14 +1,16 @@
-import { Input } from "./ui/input"
+import { Input, InputProps } from "./ui/input"
 import { Label } from "./ui/label"
 
-type Props = {
+type Props = InputProps & {
+    //value?: string | number,
     className?: string
     placeholder?: string,
     label?: string,
-    readOnly?: boolean
+    readOnly?: boolean,
+    onIdxChange: (value: string) => void,
 }
 
-function InputComponent({className, placeholder, label, readOnly}: Props) {
+function InputComponent({className, placeholder, label, readOnly, onIdxChange, ...rest}: Props) {
 
     return (
         <span className={`w-full ${className}`}>
@@ -16,7 +18,9 @@ function InputComponent({className, placeholder, label, readOnly}: Props) {
                 {label}
             </Label>
             <Input
-                id="input-field"
+                {...rest}
+                name="input-field"
+                onChange={(e) => onIdxChange(e.target.value)}
                 placeholder={placeholder}
                 className={`w-full ${readOnly && 'bg-gray-200'}`}
                 readOnly={readOnly}

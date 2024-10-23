@@ -6,29 +6,39 @@ import {
     SelectValue
 } from "@/components/ui/select"
 import { Label } from "./ui/label"
+import { SelectProps } from "node_modules/@radix-ui/react-select/dist"
 
-type Props = { // React.InputHTMLAttributes<HTMLSelectElement> &
+type Props = SelectProps & { // React.InputHTMLAttributes<HTMLSelectElement> &
+    id?: string,
+    value?: string,
     items: string[],
     placeholder?: string,
     label?: string,
     className?: string,
+    onIdxChange: (idx: number) => void,
 }
 
-function SelectComponent({items, placeholder, label, className}: Props) {
+function SelectComponent({id, items, placeholder, label, className, onIdxChange, ...rest}: Props) {
 
     return (
-        <span className={`w-full ${className}`}>
+        <span id={id} className={`w-full ${className}`}>
             <Label htmlFor="select-field">
                 {label}
             </Label>
-            <Select>
-                <SelectTrigger className="w-full mt-1" id="select-field">
+            <Select
+                {...rest}
+                onValueChange={(idx) => onIdxChange(parseInt(idx))}
+            >
+                <SelectTrigger className="w-full mt-1" name="select-field">
                     <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent>
                     {
-                        items.map((i) => (
-                            <SelectItem value={i} key={i}>{i}</SelectItem>
+                        items.map((v, i) => (
+                            <SelectItem
+                                value={i.toString()}
+                                key={v}
+                            >{v}</SelectItem>
                         ))
                     }
                 </SelectContent>
