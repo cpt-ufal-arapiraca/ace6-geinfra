@@ -5,9 +5,10 @@ type Props = {
     items: string[],
     placeholder?: string,
     label?: string,
+    onChange: (idx: number) => void,
 }
 
-function RadioGroupComponent({items, label}: Props) {
+function RadioGroupComponent({items, label, onChange}: Props) {
 
     return (
         <span>
@@ -15,18 +16,16 @@ function RadioGroupComponent({items, label}: Props) {
                 {label}
             </Label>
 
-
-            {/* Create a grid here with 3 columns */}
             <RadioGroup
                 id="radio-group"
                 defaultValue={items[0]}
-                className="mt-2"
-                onValueChange={(v) => console.log(v)}
+                className="mt-2 grid-cols-3 gap-y-4"
+                onValueChange={(idx) => onChange(parseInt(idx))}
             >
                 {
                     items.map((v, i) => (
                         <div className="flex items-center space-x-2" key={v}>
-                            <RadioGroupItem value={v} id={`option-${i}`} />
+                            <RadioGroupItem value={i.toString()} id={`option-${i}`} />
                             <Label className="font-normal" htmlFor={`option-${i}`}>{v}</Label>
                         </div>
                     ))
