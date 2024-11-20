@@ -1,0 +1,17 @@
+version: '3'
+services:
+  database:
+    container_name: geinfra
+    image: mariadb:latest
+    restart: always
+    environment:
+      - 'MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}'
+    env_file:
+      - .env
+    ports:
+      - 3306:3306
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./create-database.sql:/docker-entrypoint-initdb.d/create-database.sql
+volumes:
+  mariadb_data:
