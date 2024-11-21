@@ -14,6 +14,7 @@ export type Solicitacao = {
     servico: string,
     unidade: Unidade,
     setor: Setor,
+    status?: 'REJECTED' | 'IN_PROGRESS' | 'FINISHED', //TODO: verificar e ajustar quais serão os status. Valores apenas de teste
     //ordemServico: OrdemServico,
 }
 

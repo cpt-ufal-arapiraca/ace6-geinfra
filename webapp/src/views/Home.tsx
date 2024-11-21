@@ -9,7 +9,10 @@ function Home() {
       </h1>
 
       <nav className="mt-10">
-        <Link to="/solicitations" className="underline">Solicitações</Link>
+        <Link to="/newSolicitation" className="underline">Nova solicitação</Link>
+      </nav>
+      <nav className="mt-10">
+        <Link to="/solicitations" className="underline">Visualizar solicitações</Link>
       </nav>
     </div>
   )
