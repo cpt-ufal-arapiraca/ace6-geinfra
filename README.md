@@ -20,13 +20,17 @@ cd backend
 3. Buildando o projeto:<br>
 O Eclipse IDE já vem com o Maven instalado e configurado, portanto, assim que você importar o projeto para o Eclipse, ele irá reconhecer o arquivo `pom.xml`, intalar as dependências necessárias e compilar o projeto. Já no VS Code, você precisará instalar a extensão Java Extension Package, que é um pacote com algumas extensões úteis para o desenvolvimento Java. Dentro desse pacote, já virá a extensão para rodar os comandos Maven. Caso seja necessário instalar o Maven a parte, você pode fazer por esse link: https://maven.apache.org/download.cgi;
 
-4. Abra o arquivo BackendApplication.java, localizado na pasta: src/main/java/br/ufal/arapiraca/geinfra/backend;
-  
-5. Execute este arquivo;
-6. Uma guia do terminal deve ser aberta e mostrar o projeto Spring sendo inicializado.
-7. A API deve estar disponível no endpoint: http://localhost:8080
-8. Utilize alguma ferramenta para consultas em APIs, como o Insomnia ou o Postman.
-9. Caso utilize o Insomnia, baixe o arquivo `GEINFRA0.0.1.json` localizado na pasta `/docs` e importe a configuração dos endpoints.
+4. Renomeie o arquivo `env.example` para `.env` e adicione os valores de senha e porta nas variáveis `MARIADB_ROOT_PASSWORD` e `MARIADB_PORT`;
+5. Execute o comando a baixo para gerar a imagem docker e executar o container com as configurações:
+```bash
+docker-compose up -d
+```
+6. Abra o arquivo BackendApplication.java, localizado na pasta: src/main/java/br/ufal/arapiraca/geinfra/backend;
+7. Execute este arquivo;
+8. Uma guia do terminal deve ser aberta e mostrar o projeto Spring sendo inicializado.
+9. A API deve estar disponível no endpoint: http://localhost:8080
+10. Utilize alguma ferramenta para consultas em APIs, como o Insomnia ou o Postman.
+11. Caso utilize o Insomnia, baixe o arquivo `GEINFRA0.0.1.json` localizado na pasta `/docs` e importe a configuração dos endpoints.
 
 ## Webapp
 ### 📋 Pré-requisitos
