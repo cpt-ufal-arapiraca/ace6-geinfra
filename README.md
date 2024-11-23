@@ -2,6 +2,9 @@
 
 O objetivo do projeto é desenvolver um sistema que auxilie a equipe da Gestão de Infraestrutura (GEINFRA) no monitoramento dos chamados de serviços relacionados a infraestrutura do campus. Através dele, alunos, servidores e demais frequentadores do campus poderão solicitar serviços e acompanhar o requerimento. Também, a própria equipe GEINFRA conseguirá acompanhar melhor os chamados e coordenar de maneira mais adequada sua equipe técnica. 
 
+## Branches
+- O projeto segue o padrão de branches definido pelo [Gitflow Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow), com a branch **main** sendo a de releases para o cliente, a **dev** a principal de desenvolvimento do projeto e as demais sendo branches de features, que partem da dev e retornam para ela.
+
 ## Backend
 ### 📋 Pré-requisitos
 Para executar este projeto é preciso ter:
@@ -78,10 +81,15 @@ Os testes ainda não foram implementados à aplicação...
 * [Shadcn/ui](https://ui.shadcn.com/) - Biblioteca de construção de componentes web
 * [Tailwind](https://tailwindcss.com/docs/installation) - Biblioteca de estilização de componentes frontend
 * [Vite.js](https://vitejs.dev/guide/) - Ferramenta de auxílio à construção do projeto frontend
-* [Django/Python](https://www.djangoproject.com/) - Framework backend
-* [SQLite](https://www.sqlite.org/) - Banco de dados relacional utilizado
+* [Spring Boot/Java](https://spring.io/projects/spring-boot) - Framework backend
+* [Hibernate](https://hibernate.org/) - Framework de mapeamento objeto-relacional para backend
+* [MariaDB](https://mariadb.org/) - Banco de dados relacional utilizado
+* [Docker](https://www.docker.com/) - Serviço de virtualização utilizado rodar o banco de dados
 
 Ainda em desenvolvimento...
+
+## 📕️ Documentação
+* [Design do projeto](https://www.figma.com/design/xIYrUHaunSyPdr0tw0DFnn/GEINFRA?node-id=0-1&node-type=canvas&t=0Xuqe9qNr1XJOUHE-0)
 
 ## ✒️ Autores
 
