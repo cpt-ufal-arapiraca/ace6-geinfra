@@ -5,7 +5,8 @@ import {
 } from "react-router-dom";
 
 import Home from "./views/Home"
-import Solicitations from "./views/Solicitations"
+import NewSolicitation from "./views/NewSolicitation"
+import Solicitations from "./views/Solicitations";
 
 
 export default function Routes(){
@@ -15,6 +16,7 @@ export default function Routes(){
         <BrowserRouter>
             <RoutesContainer>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/newSolicitation" element={<NewSolicitation/>}/>
                 <Route path="/solicitations" element={<Solicitations/>}/>
             </RoutesContainer>
         </BrowserRouter>

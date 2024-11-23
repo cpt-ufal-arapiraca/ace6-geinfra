@@ -37,7 +37,7 @@ function SelectComponent({id, items, placeholder, label, className, onIdxChange,
                         items.map((v, i) => (
                             <SelectItem
                                 value={i.toString()}
-                                key={v}
+                                key={i}
                             >{v}</SelectItem>
                         ))
                     }
