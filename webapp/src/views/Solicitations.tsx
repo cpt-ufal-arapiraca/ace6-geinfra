@@ -1,4 +1,4 @@
-import { SolicitacaoCreateDto } from "@/models/Solicitacao"
+import { Solicitacao } from "@/models/Solicitacao"
 import NavBreadcrumb from "@/components/NavBreadcrumb"
 import { Button } from "@/components/ui/button"
 import solicitacaoService from "@/services/solicitacaoService"
@@ -16,26 +16,25 @@ function Solicitations() {
 
   const goBack = () => navigate('/');
 
-  const [solicitacaoDto] = useState({} as SolicitacaoCreateDto);
-  const [selectedServicoIdx, setSelectedServicoIdx] = useState(0);
-  const [otherServico, setOtherServico] = useState('');
+  const [solicitacoes, setSolicitacoes] = useState<Solicitacao[]>();
   const [loading, setLoading] = useState(false);
 
-  async function fetchSolicitations() {
+  const getData = async () => {
+    setLoading(true);
     try {
-      await solicitacaoService.post(solicitacaoDto);
-      //TODO: implemment another action to be taken when 'solicitacao' is created
+      const res = await solicitacaoService.get();
+      setSolicitacoes(res.data);
+      console.log(res.data);
     } catch (error) {
       console.error(error);
-      alert('Ocorreu uma erro ao buscar as solicitação cadastradas');
+      //alert('Ocorreu uma erro ao buscar as solicitação cadastradas');
     } finally {
       setLoading(false);
     }
   }
 
   useEffect(() => {
-    //TODO: fazer fetch dos dados
-    
+    getData();
   }, [])
 
   return (
@@ -67,9 +66,13 @@ function Solicitations() {
       {/* TODO: Verify if this scroll is okay */}
       <section className="flex flex-col items-stretch mt-8 grow overflow-y-auto">
         {
-          [1,2,3].map(x => (
-            <SolicitationCard key={x}/>
-          ))
+          solicitacoes?.length ? (
+            solicitacoes.map(s => (
+              <SolicitationCard solicitation={s} key={s.id}/>
+            ))
+          ) : (
+            <p className="text-gray-500 text-center mt-20">Nenhuma solicitação encontrada</p>
+          )
         }
       </section>
 

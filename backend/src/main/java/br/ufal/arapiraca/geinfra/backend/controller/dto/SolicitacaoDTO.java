@@ -19,8 +19,8 @@ public class SolicitacaoDTO {
     private StatusSolicitacaoEnum status;
     private String descricao;
     private String servico;
-    private Long unidade;
-    private Long setor;
+    private Long unidade; //TODO: Ajustar para retornar o objeto unidade
+    private Long setor;  //TODO: Ajustar para retornar o objeto setor
     
     public SolicitacaoDTO(Solicitacao solicitacao){
         this.id = solicitacao.getId();

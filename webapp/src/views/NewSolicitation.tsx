@@ -12,8 +12,8 @@ import solicitacaoService from "@/services/solicitacaoService"
 import { FormEvent, useEffect, useState } from "react"
 import { FaAngleLeft } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
-import unidadeService, { mockUnidades } from "@/services/unidadeService"
-import setorService, { mockSetores } from "@/services/setorService"
+import unidadeService from "@/services/unidadeService"
+import setorService from "@/services/setorService"
 import { TIPOS_SERVICOS_DEFAULT } from "@/utils/common"
 
 function NewSolicitation() {
@@ -39,12 +39,15 @@ function NewSolicitation() {
     } else {
       solicitacaoDto.servico = otherServico;
     }
+    
+    //TODO: alterar para pegar essas informações do login (email e telefone)
+    solicitacaoDto.email = 'example@email.com';
+    solicitacaoDto.telefone = '(99) 99999-9999';
 
     try {
-      console.log(solicitacaoDto);
       await solicitacaoService.post(solicitacaoDto);
       alert('SUCESSO!\n A solicitação foi cadastrada!');
-      //TODO: implemment another action to be taken when 'solicitacao' is created
+      navigate('/');
     } catch (error) {
       console.error(error);
       alert('Ocorreu uma erro ao cadastrar a solicitação');
@@ -68,17 +71,13 @@ function NewSolicitation() {
 
   useEffect(() => {
     const fetchUnidades = async () => {
-      // const res = await unidadeService.get();
-      // setUnidades(res.data);
-
-      setUnidades(mockUnidades); //TODO: remove this
+      const res = await unidadeService.get();
+      setUnidades(res.data);
     }
 
     const fetchSetores = async () => {
-      // const res = await setorService.get();
-      // setSetores(res.data);
-
-      setSetores(mockSetores);  //TODO: remove this
+      const res = await setorService.get();
+      setSetores(res.data);
     }
 
     fetchUnidades()
@@ -170,7 +169,7 @@ function NewSolicitation() {
             <TextAreaComponent
               onChange={(v) => solicitacaoDto.descricao = v}
               label="Descrição do problema (*)"
-              placeholder="Descrição do problema..."
+              placeholder="Descrição do problema... (pelo menos 10 caracteres)"
             />
           </div>
         </section>

@@ -7,6 +7,7 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
 import { GrHomeRounded } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -14,6 +15,8 @@ type Props = {
 }
 
 function NavBreadcrumb({className}: Props) {
+
+    const navigate = useNavigate();
 
     return (
         <span className="flex items-center">
@@ -27,7 +30,9 @@ function NavBreadcrumb({className}: Props) {
             <Breadcrumb>
                 <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="text-base" href="/">Home</BreadcrumbLink>
+                        <BreadcrumbLink className="text-base cursor-pointer" onClick={() => navigate('/')}>
+                            Home
+                        </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
