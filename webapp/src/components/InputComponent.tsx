@@ -4,13 +4,14 @@ import { Label } from "./ui/label"
 type Props = InputProps & {
     //value?: string | number,
     className?: string
+    inputClassName?: string
     placeholder?: string,
     label?: string,
     readOnly?: boolean,
-    onIdxChange: (value: string) => void,
+    onTxtChange: (value: string) => void,
 }
 
-function InputComponent({className, placeholder, label, readOnly, onIdxChange, ...rest}: Props) {
+function InputComponent({className, inputClassName, placeholder, label, readOnly, onTxtChange, ...rest}: Props) {
 
     return (
         <span className={`w-full ${className}`}>
@@ -20,9 +21,9 @@ function InputComponent({className, placeholder, label, readOnly, onIdxChange, .
             <Input
                 {...rest}
                 name="input-field"
-                onChange={(e) => onIdxChange(e.target.value)}
+                onChange={(e) => onTxtChange(e.target.value)}
                 placeholder={placeholder}
-                className={`w-full ${readOnly && 'bg-gray-200'}`}
+                className={`w-full ${readOnly && 'bg-gray-200'} ${inputClassName}`}
                 readOnly={readOnly}
             />
         </span>
